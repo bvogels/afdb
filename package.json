@@ -1,0 +1,23 @@
+{
+  "name": "afdb",
+  "version": "1.0.0",
+  "description": "A browser-based application to view and organize audio files",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "audio",
+    "music",
+    "mp3",
+    "database"
+  ],
+  "author": "Benjamin Vogels",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12",
+    "sqlite3": "^5.0.2"
+  }
+}

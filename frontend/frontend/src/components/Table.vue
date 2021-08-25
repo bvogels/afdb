@@ -1,6 +1,7 @@
 <template>
   <table>
     <tr>
+      <th>#</th>
       <th>ID</th>
       <th>Title</th>
       <th>Composer (First name)</th>
@@ -10,13 +11,23 @@
       <th>Path</th>
       <th>MacOS Tags</th>
     </tr>
+    <tr>
+      <td>g</td>
+    </tr>
   </table>
-
 </template>
 
 <script>
 export default {
-  name: "Table"
+  name: "Table",
+  props: {
+    works: Array,
+  },
+  methods: {
+    printWorks(works) {
+      works.forEach(e => console.log(e))
+    }
+  }
 }
 </script>
 

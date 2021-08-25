@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors")
 const path = require("path")
 
 const app = express();
@@ -18,4 +19,5 @@ app.listen(PORT, () => {
     console.log("Server is running on port 8081")
 });
 
+app.use(cors())
 app.use('/api/v1/audioFiles', audioFileRoutes);

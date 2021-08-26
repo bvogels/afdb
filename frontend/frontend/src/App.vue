@@ -1,24 +1,23 @@
 <template>
   <Header />
   <Controls @load-data="loadData()"/>
-  <Table />
+  <Table :works="works" />
 </template>
 
 <script>
 import Header from "./components/Header";
 import Controls from "./components/Controls";
 import Table from "./components/Table";
-//import Display from "./components/Display";
+import Display from "./components/Display";
 
 export default {
   name: 'App',
   components: {
-    Header, Controls, Table, //Display,
+    Header, Controls, Table, Display,
   },
   data() {
     return {
       works: []
-
     }
   },
   methods: {
@@ -27,8 +26,6 @@ export default {
           .then(res => res.json())
           .then(resJson => {
             this.works = resJson;
-            console.log('works');
-
           })
     }
   }

@@ -15,8 +15,7 @@ export default {
   name: "Controls",
   components: {
     Button
-  },
-
+  }
 }
 
 

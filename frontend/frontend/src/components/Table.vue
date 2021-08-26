@@ -15,19 +15,13 @@
       <td>g</td>
     </tr>
   </table>
+  <div>{{ works }}</div>
 </template>
 
 <script>
 export default {
   name: "Table",
-  props: {
-    works: Array,
-  },
-  methods: {
-    printWorks(works) {
-      works.forEach(e => console.log(e))
-    }
-  }
+  props: ['works']
 }
 </script>
 

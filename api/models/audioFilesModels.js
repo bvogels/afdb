@@ -6,7 +6,7 @@ const db = new sqlite3.Database('./afdb.db');
 class audioFilesModels {
     static getFile() {
         let files = [];
-        let query = 'SELECT * FROM WORKS LIMIT 30';
+        let query = 'SELECT * FROM WORKS LIMIT 50';
         return new Promise((resolve) => {
              db.all(query, [], (err, rows) => {
                 if (err) {

@@ -2,18 +2,19 @@
   <Header />
   <Controls @load-data="loadData()"/>
   <Table :works="works" />
+  <Footer :works="works" />
 </template>
 
 <script>
 import Header from "./components/Header";
 import Controls from "./components/Controls";
 import Table from "./components/Table";
-import Display from "./components/Display";
+import Footer from "./components/Footer"
 
 export default {
   name: 'App',
   components: {
-    Header, Controls, Table, Display,
+    Header, Controls, Table, Footer
   },
   data() {
     return {
@@ -26,7 +27,7 @@ export default {
           .then(res => res.json())
           .then(resJson => {
             this.works = resJson;
-          })
+          });
     }
   }
 }

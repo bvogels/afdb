@@ -1,8 +1,8 @@
 <template>
   <Header />
   <Controls @load-data="loadData()"/>
-  <Table :works="works" />
-  <Footer :works="works" />
+  <Table :works="focusTags" />
+  <Footer @focus="focusTags" :works="focusTags()" />
 </template>
 
 <script>
@@ -28,6 +28,17 @@ export default {
           .then(resJson => {
             this.works = resJson;
           });
+    },
+    focusTags(tracks) {
+      watchEffect(() => console.log(this.tracks))
+      console.log("Focus: ", tracks)
+      console.log("Work:", this.works)
+      console.log("Test: ", this.works[0].title)
+
+      //let focused = this.works.filter( t => tracks.includes(t));
+      //console.log(focused)
+      return this.works
+
     }
   }
 }

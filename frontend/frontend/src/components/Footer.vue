@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
   <div>Tags present in current selection</div>
-    <span class="tag" v-for="tag in tags.keys()" :key="tag.index" @click="focusTag(tag)">{{ tag }} ({{ tags.get(tag).length }})</span>
+    <span class="tag" v-for="tag in tags.keys()" :key="tag.index" @click="focusTag(tags.get(tag))">{{ tag }} ({{ tags.get(tag).length }})</span>
   </footer>
 
 </template>
@@ -11,8 +11,8 @@ export default {
   name: "Footer",
   props: ['works'],
   methods: {
-    focusTag(tag) {
-      console.log(tag)
+    focusTag(tracks) {
+      this.$emit('focus', tracks)
     }
   },
   computed: {

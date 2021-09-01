@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
   <div>Tags present in current selection</div>
-    <span class="tag" v-for="tag in tags.keys()" :key="tag.index">{{ tag }}</span>
+    <span class="tag" v-for="tag in tags.keys()" :key="tag.index" @click="focusTag(tag)">{{ tag }} ({{ tags.get(tag).length }})</span>
   </footer>
 
 </template>
@@ -10,6 +10,11 @@
 export default {
   name: "Footer",
   props: ['works'],
+  methods: {
+    focusTag(tag) {
+      console.log(tag)
+    }
+  },
   computed: {
     tags() {
       let tagDirectory = new Map()
@@ -55,3 +60,5 @@ export default {
 }
 
 </style>
+
+//<span class="tag" v-for="tag in tags.keys()" :key="tag.index" @click="focusTag(tag)">{{ tag }} ({{ tags.get(tag).length }})</span>

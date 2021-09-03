@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick()">Load Files</button>
+  <button @click="onClick()">(Re)Load Files</button>
   <button>Change Tags</button>
   <button>Play File</button>
   <button>Search</button>

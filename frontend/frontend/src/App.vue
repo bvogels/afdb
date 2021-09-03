@@ -1,8 +1,8 @@
 <template>
   <Header />
   <Controls @load-data="loadData()"/>
-  <Table :works="focusTags" />
-  <Footer @focus="focusTags" :works="focusTags()" />
+  <Table :works="works" />
+  <Footer @focus="focusTags" :works="works" />
 </template>
 
 <script>
@@ -26,20 +26,16 @@ export default {
       await fetch('http://localhost:8081/api/v1/audiofiles')
           .then(res => res.json())
           .then(resJson => {
-            this.works = resJson;
+            this.works = resJson
           });
     },
-    focusTags(tracks) {
-      watchEffect(() => console.log(this.tracks))
-      console.log("Focus: ", tracks)
-      console.log("Work:", this.works)
-      console.log("Test: ", this.works[0].title)
-
-      //let focused = this.works.filter( t => tracks.includes(t));
-      //console.log(focused)
-      return this.works
-
+    focusTags(selection) {
+      this.works = this.works.filter(track => selection.includes(track.id))
     }
+  },
+  watch: {
+     works() {
+     }
   }
 }
 </script>

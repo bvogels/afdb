@@ -8,7 +8,7 @@ class audioFilesModels {
         let files = [];
         let query = 'SELECT * FROM WORKS LIMIT 150';
         return new Promise((resolve) => {
-             db.all(query, [], (err, rows) => {
+            db.all(query, [], (err, rows) => {
                 if (err) {
                     throw err;
                 }
@@ -16,9 +16,43 @@ class audioFilesModels {
                     files.push(row);
                 });
                 resolve(files);
-             })
-        console.log(files);
-        return files;
+            })
+            return files;
+        })
+    }
+
+    static getFileById(trackId) {
+        let track;
+        let query = 'SELECT * FROM WORKS WHERE id = ?';
+        return new Promise((resolve) => {
+            db.get(query, [trackId], (err, row) => {
+                if (err) {
+                    throw err;
+                } else {
+                    track = row;
+                }
+                resolve(track);
+            })
+            return track;
+        })
+    }
+
+    static getFilesByTag(tag) {
+        let match = '%' + tag + '%';
+        console.log("Tag:", match)
+        let tracks = [];
+        let query = 'SELECT * FROM WORKS WHERE tags LIKE ?';
+        return new Promise((resolve) => {
+            db.all(query, [match], (err, rows) => {
+                if (err) {
+                    throw err;
+                }
+                rows.forEach(row => {
+                    tracks.push(row);
+                    });
+                resolve(tracks);
+            })
+            return tracks;
         })
     }
 }

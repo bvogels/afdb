@@ -1,8 +1,8 @@
 <template>
   <div id="outer">
       <div id="controllable">
-        <Button @load-data="$emit('load-data')"
-        />
+        <Button @load-data="queryTag"/>
+
       </div>
   </div>
 
@@ -15,6 +15,12 @@ export default {
   name: "Controls",
   components: {
     Button
+  },
+  methods: {
+    queryTag(tag) {
+      console.log(tag)
+     this.$emit('load-data', tag)
+    }
   }
 }
 

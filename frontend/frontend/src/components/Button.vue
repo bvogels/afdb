@@ -1,8 +1,11 @@
 <template>
-  <button @click="onClick()">(Re)Load Files</button>
-  <button>Change Tags</button>
-  <button>Play File</button>
-  <button>Search</button>
+  <form @submit="onClick" class="add-form">
+    <div class="form-control">
+      <label>Tags: </label>
+      <input type="text" v-model="tag" name="tag" placeholder="tag" />
+      <input type="submit" value="Query Tags" />
+    </div>
+  </form>
 
 </template>
 
@@ -10,9 +13,16 @@
 
 export default {
   name: "Button",
+  data() {
+    return {
+      tag: '',
+    }
+  },
   methods: {
-     onClick() {
-       this.$emit('load-data');
+     onClick(e) {
+       e.preventDefault()
+       //console.log(this.tag)
+       this.$emit('load-data', this.tag);
      }
   },
   emits: ['load-data']

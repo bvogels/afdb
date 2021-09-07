@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <Controls @load-data="loadData()"/>
+  <Controls @load-data="loadData"/>
   <Table :works="works" />
   <Footer @focus="focusTags" :works="works" />
 </template>
@@ -22,8 +22,9 @@ export default {
     }
   },
   methods: {
-    async loadData() {
-      await fetch('http://localhost:8081/api/v1/audiofiles')
+    async loadData(tag) {
+      console.log(tag)
+      await fetch('http://localhost:8081/api/v1/audiofiles/' + tag)
           .then(res => res.json())
           .then(resJson => {
             this.works = resJson

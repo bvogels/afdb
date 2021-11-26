@@ -1,8 +1,7 @@
 <template>
   <div id="outer">
       <div id="controllable">
-        <Button @load-data="$emit('load-data')"
-        />
+        <Button @search-term="selection"/>
       </div>
   </div>
 
@@ -15,7 +14,14 @@ export default {
   name: "Controls",
   components: {
     Button
+  },
+  methods: {
+    selection(sel) {
+      this.$emit('search-term', sel)
+    }
   }
+
+  // emits: ['search-term']
 }
 
 

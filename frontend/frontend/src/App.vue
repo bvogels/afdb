@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <Controls @load-data="loadData()"/>
+  <Controls @search-term="loadData"/>
   <Table :works="works" />
   <Footer @focus="focusTags" :works="works" />
 </template>
@@ -18,12 +18,14 @@ export default {
   },
   data() {
     return {
-      works: []
+      works: [],
+      selection: ''
     }
   },
   methods: {
-    async loadData() {
-      await fetch('http://localhost:8081/api/v1/audiofiles')
+    async loadData(searchTerm) {
+      this.selection = searchTerm
+      await fetch('http://localhost:8081/api/v1/audiofiles/' + searchTerm)
           .then(res => res.json())
           .then(resJson => {
             this.works = resJson

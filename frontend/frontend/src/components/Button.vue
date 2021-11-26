@@ -1,5 +1,7 @@
 <template>
-  <button @click="onClick()">(Re)Load Files</button>
+  <label for="selection">Search for: </label>
+  <input v-model="searchTerm" id="selection" type="text" />
+  <button type="submit" @click="$emit('search-term', searchTerm)" title="Load">Search</button>
   <button>Change Tags</button>
   <button>Play File</button>
   <button>Search</button>
@@ -10,19 +12,20 @@
 
 export default {
   name: "Button",
-  methods: {
-     onClick() {
-       this.$emit('load-data');
-     }
+  data() {
+    return {
+      searchTerm: ''
+    }
   },
-  emits: ['load-data']
+  emits: ['search-term']
 }
 </script>
 
 <style scoped>
-button {
+button, input {
   margin-right: 10px;
 }
+
 
 
 </style>

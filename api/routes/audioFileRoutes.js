@@ -3,7 +3,7 @@ const fileRoutes = Router();
 
 const audioFilesController = require('../controllers/audioFilesController')
 
-fileRoutes.get('/', audioFilesController.getFiles);
+//fileRoutes.get('/', audioFilesController.getFiles);
 
 //fileRoutes.get('/:id', audioFilesController.getFilesById);
 

@@ -1,9 +1,8 @@
 <template>
   <footer class="footer">
-  <div>Tags present in current selection</div>
+  <div>Tags present in current selection ({{ tags.size }} displayed) </div>
     <span class="tag" v-for="tag in tags.keys()" :key="tag.index" @click="focusTag(tags.get(tag))">{{ tag }} ({{ tags.get(tag).length }})</span>
   </footer>
-
 </template>
 
 <script>
@@ -35,7 +34,7 @@ export default {
       }
       return tagDirectory
     }
-  },
+  }
 }
 </script>
 

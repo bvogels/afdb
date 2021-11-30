@@ -1,7 +1,9 @@
 <template>
   <footer class="footer">
-  <div>Tags present in current selection ({{ tags.size }} displayed) </div>
-    <span class="tag" v-for="tag in tags.keys()" :key="tag.index" @click="focusTag(tags.get(tag))">{{ tag }} ({{ tags.get(tag).length }})</span>
+  <span>Tags present in current selection ({{ tags.size }} displayed) </span>
+    <span id="limit" @click="top5">Show Top 5</span>
+    <div>
+    <span class="tag" v-for="tag in tags.keys()" :key="tag.index" @click="focusTag(tags.get(tag))">{{ tag }} ({{ tags.get(tag).length }})</span> </div>
   </footer>
 </template>
 
@@ -12,6 +14,26 @@ export default {
   methods: {
     focusTag(tracks) {
       this.$emit('focus', tracks)
+    },
+    top5() {
+      let title = []
+      let tags = []
+      let i = this.tags.entries()
+      for (let item of i) {
+        if (title.length < 5) {
+          title.push(item[0])
+          tags.push(item[1].length)
+        }
+        let maximum = Math.max(...tags)
+        let minimum = Math.min(...tags)
+        if (item[1].length > maximum) {
+          title.splice(tags.indexOf(minimum), 1, item[0])
+          tags.splice(tags.indexOf(minimum), 1, item[1])
+          maximum = Math.max(...tags)
+          minimum = Math.min(...tags)
+        }
+      }
+      this.$emit('top5-tags', title)
     }
   },
   computed: {
@@ -40,6 +62,10 @@ export default {
 
 
 <style scoped>
+
+#limit {
+  background: red;
+}
 
 .footer {
   position: fixed;

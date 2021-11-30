@@ -2,7 +2,7 @@
   <Header />
   <Controls @search-term="loadData"/>
   <Table :works="works" />
-  <Footer @focus="focusTags" :works="works" />
+  <Footer @top5-tags="topFiveTags" @focus="focusTags" :works="works" />
 </template>
 
 <script>
@@ -18,8 +18,7 @@ export default {
   },
   data() {
     return {
-      works: [],
-      selection: ''
+      works: ([])
     }
   },
   methods: {
@@ -33,7 +32,13 @@ export default {
     },
     focusTags(selection) {
       this.works = this.works.filter(track => selection.includes(track.id))
-    }
+    },
+    //topFiveTags(topTags) {
+      //for (let item in this.works) {
+
+      //}
+      //console.log(tags)
+    //}
   },
   watch: {
      works() {

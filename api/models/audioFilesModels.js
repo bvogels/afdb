@@ -51,6 +51,7 @@ class audioFilesModels {
                     tracks.push(row);
                     });
                 resolve(tracks);
+                console.log(tracks[1].tags)
             })
             return tracks;
         })
